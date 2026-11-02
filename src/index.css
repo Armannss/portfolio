@@ -1,0 +1,125 @@
+@import "@fontsource-variable/onest";
+@import "@fontsource-variable/jetbrains-mono";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design plan. One idea: the portfolio is a repo map, drawn like Arman's LinkedIn posters.
+   Navy ground, white and lime two-line headlines, white for evidence.
+   The live project graph in the opening is the only loud element. Everything after it stays still. */
+
+@layer base {
+  html {
+    background: #0a1030;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-navy font-sans text-white antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: #86c232;
+    color: #0a1030;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-[78rem];
+    padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 48rem) {
+    .wrap {
+      padding-left: max(2.5rem, env(safe-area-inset-left, 0px));
+      padding-right: max(2.5rem, env(safe-area-inset-right, 0px));
+    }
+  }
+  .headline {
+    @apply font-extrabold;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+  .headline-sub {
+    @apply block text-lime;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase;
+    letter-spacing: 0.22em;
+  }
+  .hub-pill {
+    --pad: 2.25rem;
+    position: absolute;
+    left: calc(var(--pad) + (100% - 2 * var(--pad)) * var(--mx));
+    top: calc(var(--pad) + (100% - 2 * var(--pad)) * var(--my));
+    transform: translate(-50%, 1.9rem);
+  }
+  @media (min-width: 48rem) {
+    .hub-pill {
+      left: calc(var(--pad) + (100% - 2 * var(--pad)) * var(--x));
+      top: calc(var(--pad) + (100% - 2 * var(--pad)) * var(--y));
+      transform: translate(-50%, 2.6rem);
+    }
+  }
+  .text-link {
+    @apply font-semibold underline decoration-lime decoration-2;
+    text-underline-offset: 0.25em;
+  }
+  /* Jetaime wears its own brand: the scalloped awning and glass-case shelf from its website. */
+  .awning {
+    --scallop: 4.5rem;
+    height: 3.75rem;
+    background: repeating-linear-gradient(90deg, #f5e1d3 0 var(--scallop), #fbdcd6 var(--scallop) calc(var(--scallop) * 2));
+    -webkit-mask:
+      linear-gradient(#000 0 0) top / 100% 1.5rem no-repeat,
+      radial-gradient(circle calc(var(--scallop) / 2) at 50% 0, #000 98%, transparent) 0 1.5rem / var(--scallop) 2.25rem repeat-x;
+    mask:
+      linear-gradient(#000 0 0) top / 100% 1.5rem no-repeat,
+      radial-gradient(circle calc(var(--scallop) / 2) at 50% 0, #000 98%, transparent) 0 1.5rem / var(--scallop) 2.25rem repeat-x;
+  }
+  .shelf-phone {
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  @media (min-width: 64rem) {
+    .turn-right,
+    .turn-left {
+      perspective: 1400px;
+    }
+    .turn-right .shelf-phone {
+      transform: rotateY(13deg);
+    }
+    .turn-left .shelf-phone {
+      transform: rotateY(-13deg);
+    }
+    figure:hover > .shelf-phone,
+    figure:focus-within > .shelf-phone {
+      transform: rotateY(0) translateY(-0.6rem);
+    }
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail {
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .shelf-phone {
+    transition: none;
+  }
+}
