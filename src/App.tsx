@@ -5,9 +5,9 @@ const base = import.meta.env.BASE_URL;
 const GITHUB = "https://github.com/Armannss";
 const LINKEDIN = "https://www.linkedin.com/in/arman-naseri-far-5773b3341/";
 
-function StatusBar({ light }: { light: boolean }) {
+function StatusBar({ light, image }: { light: boolean; image: string }) {
   return (
-    <div className={`iphone-status ${light ? "text-white" : "text-black"}`} aria-hidden="true">
+    <div className={`iphone-status ${light ? "text-white" : "text-black"}`} style={{ backgroundImage: `url(${image})` }} aria-hidden="true">
       <span>9:41</span>
       <svg viewBox="0 0 68 13" fill="currentColor">
         <rect x="0" y="9" width="3" height="4" rx="1" />
@@ -25,10 +25,10 @@ function StatusBar({ light }: { light: boolean }) {
   );
 }
 
-type PhoneProps = { src: string; alt: string; height?: number; className?: string; bar?: string; light?: boolean };
+type PhoneProps = { src: string; alt: string; className?: string; bar: string; light?: boolean };
 
-// A screen without `bar` already includes its own status bar.
-function Phone({ src, alt, height = 1580, className = "", bar, light = false }: PhoneProps) {
+function Phone({ src, alt, className = "", bar, light = false }: PhoneProps) {
+  const image = `${base}assets/${src}`;
   return (
     <div className={`iphone ${className}`}>
       <span className="iphone-key left-[-0.7cqw] top-[17%] h-[3.6%]" />
@@ -37,11 +37,10 @@ function Phone({ src, alt, height = 1580, className = "", bar, light = false }: 
       <span className="iphone-key right-[-0.7cqw] top-[28%] h-[11%]" />
       <div className="iphone-body shadow-phone">
         <div className="iphone-glass">
-          <div className="iphone-screen" style={{ background: bar ?? "#000" }}>
-            {bar && <StatusBar light={light} />}
-            <img src={`${base}assets/${src}`} alt={alt} width={780} height={height} loading="lazy" decoding="async" className="iphone-image" />
+          <div className="iphone-screen" style={{ background: bar }}>
+            <StatusBar light={light} image={image} />
+            <img src={image} alt={alt} width={780} height={1580} loading="lazy" decoding="async" className="iphone-image" />
             <span className="iphone-island" />
-            {!bar && <span className="iphone-home bg-white" />}
           </div>
         </div>
       </div>
@@ -113,10 +112,14 @@ function Opening() {
 
 function Nextribe() {
   const screens = [
-    ["nextribe-today.jpg", "Today", "Today screen with the day's score and two missions, each with three effort levels"],
-    ["nextribe-planner.jpg", "Planner", "Planner screen where a typed sentence becomes items on a daily timeline"],
-    ["nextribe-progress.jpg", "Progress", "Progress screen with a weekly chart, an activity calendar and a radar of the six paths"],
-    ["nextribe-tribe.jpg", "Tribe", "Tribe screen with a shared challenge and a leaderboard"],
+    ["nextribe-today.jpg", "Today", "#1f182c", "Home screen with a personal greeting, the path logo that fills up through the week and the day's score"],
+    ["nextribe-sleep.jpg", "Sleep", "#303674", "Sleep log with a dial for bedtime and wake time and a quality rating"],
+    ["nextribe-library.jpg", "Library", "#1d172a", "Library of books, films and podcasts with search, filters and a work of the week"],
+    ["nextribe-paths.jpg", "Six paths", "#1e182d", "Six paths screen with the NEXTRIBE logo filling up by path and a level for each one"],
+    ["nextribe-flashcards.jpg", "Flashcards", "#1e182b", "English flashcards with levels from A1 to C2"],
+    ["nextribe-workout.jpg", "Home workout", "#1e182d", "Home workout with an animated figure and three types of exercise"],
+    ["nextribe-journey.jpg", "Journey", "#1e172b", "Yearly journey map with a path up a mountain under the moon"],
+    ["nextribe-breathe.jpg", "Breathing", "#512f4e", "Guided breathing with a glowing sphere and a choice of exercises"],
   ];
   return (
     <section id="work" className="scroll-mt-8 pt-24 md:pt-40">
@@ -128,14 +131,14 @@ function Nextribe() {
             <span className="headline-sub">Installed from the browser.</span>
           </h2>
           <p className="max-w-[44rem] text-xl leading-snug text-soft">
-            A Persian web app with daily missions across six paths, planning, progress charts and a group leaderboard. Members add it to their phone without an app store.
+            A Persian web app with daily missions across six paths, a planner, sleep and food tracking, flashcards, guided breathing, home workouts, an AI coach and a library of 198 works. Members add it to their phone without an app store.
           </p>
         </div>
 
-        <div className="rail mx-auto mt-12 grid max-w-[100rem] auto-cols-[min(66vw,16rem)] grid-flow-col gap-5 overflow-x-auto px-5 pb-8 md:mt-16 lg:grid-flow-row lg:grid-cols-4 lg:gap-7 lg:overflow-visible lg:px-10">
-          {screens.map(([src, name, alt], i) => (
+        <div className="rail mx-auto mt-12 grid max-w-[100rem] auto-cols-[min(66vw,16rem)] grid-flow-col gap-5 overflow-x-auto px-5 pb-8 md:mt-16 lg:grid-flow-row lg:grid-cols-4 lg:gap-x-7 lg:gap-y-10 lg:overflow-visible lg:px-10">
+          {screens.map(([src, name, bar, alt], i) => (
             <figure key={src} className={`m-0 ${i % 2 ? "lg:mt-16" : ""}`}>
-              <Phone src={src} alt={alt} height={1701} />
+              <Phone src={src} alt={alt} bar={bar} light />
               <figcaption className="mt-4 text-center text-sm text-dim">{name}</figcaption>
             </figure>
           ))}
@@ -158,7 +161,7 @@ function Nextribe() {
         </div>
 
         <div className="wrap mt-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 md:mt-14">
-          <p className="max-w-[38rem] text-sm text-dim">Still in early validation with club members, so there are no user numbers to report yet. Screens show the public preview with sample data. Source code is private.</p>
+          <p className="max-w-[38rem] text-sm text-dim">Still in early validation with club members, so there are no user numbers to report yet. Screens come from a test account with sample data. Source code is private.</p>
           <p className="flex flex-wrap gap-x-6 gap-y-2">
             <a className="text-link" href="https://nextribe.app/welcome">Visit the website</a>
             <a className="text-link" href="https://nextribe.app/welcome#inside-app">Try the app preview</a>

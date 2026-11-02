@@ -108,6 +108,9 @@
     justify-content: space-between;
     height: 14.4cqw;
     padding: 1.4cqw 7.5cqw 0 9.5cqw;
+    /* Stretches the top edge of the screenshot, so the bar blends into each app. */
+    background-position: top;
+    background-size: 100% 6000%;
     font-size: 4.2cqw;
     font-weight: 600;
     line-height: 1;
@@ -144,16 +147,6 @@
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, #2c3a63, #0a0d18 70%);
     transform: translateY(-50%);
-  }
-  .iphone-home {
-    position: absolute;
-    bottom: 1.8cqw;
-    left: 50%;
-    width: 33cqw;
-    height: 1.2cqw;
-    border-radius: 999px;
-    opacity: 0.85;
-    transform: translateX(-50%);
   }
   .iphone-key {
     position: absolute;
