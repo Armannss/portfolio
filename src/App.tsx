@@ -5,18 +5,46 @@ const base = import.meta.env.BASE_URL;
 const GITHUB = "https://github.com/Armannss";
 const LINKEDIN = "https://www.linkedin.com/in/arman-naseri-far-5773b3341/";
 
-function Phone({ src, alt, height = 1688, className = "" }: { src: string; alt: string; height?: number; className?: string }) {
+function StatusBar({ light }: { light: boolean }) {
   return (
-    <div className={`rounded-[clamp(1.7rem,3.2vw,2.75rem)] bg-[linear-gradient(150deg,#6b77a4,#1a2348_42%,#0b1130_68%,#525d8a)] p-[0.4rem] shadow-phone ${className}`}>
-      <img
-        src={`${base}assets/${src}`}
-        alt={alt}
-        width={780}
-        height={height}
-        loading="lazy"
-        decoding="async"
-        className="block aspect-[9/19.5] h-auto w-full rounded-[clamp(1.4rem,2.8vw,2.4rem)] bg-navy-up object-cover object-top"
-      />
+    <div className={`iphone-status ${light ? "text-white" : "text-black"}`} aria-hidden="true">
+      <span>9:41</span>
+      <svg viewBox="0 0 68 13" fill="currentColor">
+        <rect x="0" y="9" width="3" height="4" rx="1" />
+        <rect x="5" y="6" width="3" height="7" rx="1" />
+        <rect x="10" y="3" width="3" height="10" rx="1" />
+        <rect x="15" y="0" width="3" height="13" rx="1" />
+        <path d="M33 2.2c2.5 0 4.8 1 6.5 2.6l1.1-1.2A11 11 0 0 0 33 .5a11 11 0 0 0-7.6 3.1l1.1 1.2A9.300 9.300 0 0 1 33 2.200Z" />
+        <path d="M33 6.200c1.400 0 2.700.5 3.700 1.500l1.100-1.200A7 7 0 0 0 33 4.500a7 7 0 0 0-4.800 2l1.100 1.200a5.300 5.300 0 0 1 3.700-1.500Z" />
+        <path d="M33 8.500c-.9 0-1.700.4-2.300.9L33 12l2.300-2.600c-.6-.5-1.400-.9-2.300-.9Z" />
+        <rect x="46.500" y=".5" width="18" height="12" rx="3.500" fill="none" stroke="currentColor" strokeOpacity=".4" />
+        <rect x="48" y="2" width="15" height="9" rx="2.200" />
+        <path d="M66 4.500v4c.8-.3 1.500-1.100 1.500-2s-.7-1.700-1.500-2Z" fillOpacity=".5" />
+      </svg>
+    </div>
+  );
+}
+
+type PhoneProps = { src: string; alt: string; height?: number; className?: string; bar?: string; light?: boolean };
+
+// A screen without `bar` already includes its own status bar.
+function Phone({ src, alt, height = 1580, className = "", bar, light = false }: PhoneProps) {
+  return (
+    <div className={`iphone ${className}`}>
+      <span className="iphone-key left-[-0.7cqw] top-[17%] h-[3.6%]" />
+      <span className="iphone-key left-[-0.7cqw] top-[24%] h-[7%]" />
+      <span className="iphone-key left-[-0.7cqw] top-[33%] h-[7%]" />
+      <span className="iphone-key right-[-0.7cqw] top-[28%] h-[11%]" />
+      <div className="iphone-body shadow-phone">
+        <div className="iphone-glass">
+          <div className="iphone-screen" style={{ background: bar ?? "#000" }}>
+            {bar && <StatusBar light={light} />}
+            <img src={`${base}assets/${src}`} alt={alt} width={780} height={height} loading="lazy" decoding="async" className="iphone-image" />
+            <span className="iphone-island" />
+            {!bar && <span className="iphone-home bg-white" />}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -163,9 +191,9 @@ function Parsilon() {
         </div>
 
         <div className="flex justify-center pb-10 lg:sticky lg:top-8 lg:-mt-44 lg:self-start">
-          <Phone src="parsilon-home.jpg" alt="Parsilon home page with brake parts and a part search" className="relative z-0 w-[50%] max-w-[22rem] translate-x-[42%] translate-y-12 -rotate-[4deg]" />
-          <Phone src="parsilon-assistant.jpg" alt="The assistant answers a request for a front brake disc and shows the matching part with its price" className="relative z-10 w-[50%] max-w-[22rem]" />
-          <Phone src="parsilon-product.jpg" alt="Product page for a brake disc with price and stock" className="relative z-0 w-[50%] max-w-[22rem] -translate-x-[42%] translate-y-12 rotate-[4deg]" />
+          <Phone src="parsilon-home.jpg" alt="Parsilon home page with brake parts and a part search" bar="#fefefe" className="relative z-0 w-[50%] max-w-[22rem] translate-x-[42%] translate-y-12 -rotate-[4deg]" />
+          <Phone src="parsilon-assistant.jpg" alt="The assistant answers a request for a front brake disc and shows the matching part with its price" bar="#fefefe" className="relative z-10 w-[50%] max-w-[22rem]" />
+          <Phone src="parsilon-product.jpg" alt="Product page for a crankshaft pulley with price and stock" bar="#fefefe" className="relative z-0 w-[50%] max-w-[22rem] -translate-x-[42%] translate-y-12 rotate-[4deg]" />
         </div>
       </div>
     </article>
@@ -252,7 +280,7 @@ function Jetaime() {
       <div className="rail shelf mx-auto mt-12 grid max-w-[100rem] auto-cols-[min(66vw,16rem)] grid-flow-col gap-5 overflow-x-auto px-5 md:mt-16 lg:grid-flow-row lg:grid-cols-4 lg:gap-7 lg:overflow-visible lg:px-10">
         {screens.map(([src, name, alt, turn]) => (
           <figure key={src} className={`m-0 ${turn}`}>
-            <Phone src={src} alt={alt} className="shelf-phone" />
+            <Phone src={src} alt={alt} bar="#ffffff" className="shelf-phone" />
             <figcaption className="mt-5 text-center text-sm text-peach">{name}</figcaption>
           </figure>
         ))}
@@ -290,9 +318,9 @@ function MoreWork() {
             </div>
           ))}
         </div>
-        <div className="mx-auto grid w-full max-w-[28rem] grid-cols-2 gap-5 lg:sticky lg:top-8">
-          <Phone src="armanly.jpg" alt="Armanly home screen with a greeting, level and the first lesson" />
-          <Phone src="belvia.jpg" alt="Order calculator form with customer details, exchange rate and items" className="mt-12" />
+        <div className="mx-auto grid w-full max-w-[28rem] grid-cols-2 items-start gap-5 lg:sticky lg:top-8">
+          <Phone src="armanly.jpg" alt="Armanly home screen with a greeting, level and the first lesson" bar="#10131d" light />
+          <Phone src="belvia.jpg" alt="Order calculator form with customer details, exchange rate and items" bar="#161210" light className="mt-12" />
         </div>
       </div>
     </section>

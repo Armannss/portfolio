@@ -76,6 +76,92 @@
     @apply font-semibold underline decoration-lime decoration-2;
     text-underline-offset: 0.25em;
   }
+  /* An iPhone drawn in CSS. Every size uses cqw, so the device scales as one object at any width. */
+  .iphone {
+    position: relative;
+    width: 100%;
+    container-type: inline-size;
+  }
+  .iphone-body {
+    padding: 1cqw;
+    border-radius: 15cqw;
+    background: linear-gradient(135deg, #d6d9e2, #6f7488 18%, #2b3045 46%, #666c82 72%, #cfd3de);
+  }
+  .iphone-glass {
+    padding: 2.5cqw;
+    border-radius: 14cqw;
+    background: #000;
+    box-shadow: inset 0 0 0 0.25cqw rgba(255, 255, 255, 0.12);
+  }
+  .iphone-screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 9 / 19.5;
+    overflow: hidden;
+    border-radius: 11.5cqw;
+  }
+  .iphone-status {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: space-between;
+    height: 14.4cqw;
+    padding: 1.4cqw 7.5cqw 0 9.5cqw;
+    font-size: 4.2cqw;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .iphone-status svg {
+    height: 3.4cqw;
+  }
+  .iphone-image {
+    display: block;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: top;
+  }
+  .iphone-island {
+    position: absolute;
+    top: 2.6cqw;
+    left: 50%;
+    width: 30cqw;
+    height: 9cqw;
+    border-radius: 999px;
+    background: #000;
+    transform: translateX(-50%);
+  }
+  .iphone-island::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 2.6cqw;
+    width: 3.2cqw;
+    height: 3.2cqw;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #2c3a63, #0a0d18 70%);
+    transform: translateY(-50%);
+  }
+  .iphone-home {
+    position: absolute;
+    bottom: 1.8cqw;
+    left: 50%;
+    width: 33cqw;
+    height: 1.2cqw;
+    border-radius: 999px;
+    opacity: 0.85;
+    transform: translateX(-50%);
+  }
+  .iphone-key {
+    position: absolute;
+    width: 1cqw;
+    border-radius: 0.5cqw;
+    background: linear-gradient(90deg, #8b90a3, #4a4f64);
+  }
+
   /* Jetaime wears its own brand: the scalloped awning and glass-case shelf from its website. */
   .awning {
     --scallop: 4.5rem;
