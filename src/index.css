@@ -110,7 +110,7 @@
     padding: 1.4cqw 7.5cqw 0 9.5cqw;
     /* Stretches the top edge of the screenshot, so the bar blends into each app. */
     background-position: top;
-    background-size: 100% 6000%;
+    background-size: 100% 60000%;
     font-size: 4.2cqw;
     font-weight: 600;
     line-height: 1;
