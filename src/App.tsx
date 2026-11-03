@@ -105,7 +105,7 @@ function Opening() {
         </div>
       </div>
 
-      <div className="pt-6">
+      <div className="pt-20 md:pt-28">
         <ProjectGraph />
       </div>
     </header>
