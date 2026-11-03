@@ -86,7 +86,7 @@ function Opening() {
           <i className="h-3 w-3 rounded-full bg-lime shadow-[0_0_0_5px_rgba(134,194,50,.22)]" />
           Arman Naseri Far
         </p>
-        <span className="eyebrow rounded-full border border-navy-line px-4 py-2 text-[0.6875rem] text-soft">Open to internships</span>
+        <span className="eyebrow rounded-full border border-navy-line px-4 py-2 text-[0.6875rem] text-soft">Turin, Italy</span>
       </div>
 
       <div className="wrap grid gap-7 pt-14 md:pt-24">
@@ -541,7 +541,7 @@ function Contact() {
     <footer id="contact" className="wrap mt-24 scroll-mt-8 pb-10 md:mt-36">
       <h2 className="headline text-[clamp(2.375rem,6.4vw,5.25rem)]">
         Let's talk.
-        <span className="headline-sub">I'm open to internships.</span>
+        <span className="headline-sub">Email or call me.</span>
       </h2>
       <a href={`mailto:${gmail}`} className="mt-10 block break-words text-[clamp(1.4375rem,6.2vw,4.25rem)] font-extrabold leading-tight tracking-tight underline decoration-lime decoration-[3px] underline-offset-[0.18em] md:mt-14">{gmail}</a>
       <div className="mt-8 grid gap-6 sm:grid-cols-3">
