@@ -20,6 +20,7 @@ export default {
       fontFamily: {
         sans: ['"Onest Variable"', '"Helvetica Neue"', "Arial", "sans-serif"],
         mono: ['"JetBrains Mono Variable"', "ui-monospace", "Menlo", "monospace"],
+        grotesk: ['"Space Grotesk Variable"', '"Helvetica Neue"', "Arial", "sans-serif"],
       },
       boxShadow: {
         phone: "0 40px 70px -28px rgba(2, 5, 25, .8), 0 16px 30px -18px rgba(2, 5, 25, .6)",

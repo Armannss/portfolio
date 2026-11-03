@@ -14,6 +14,9 @@ importers:
       '@fontsource-variable/onest':
         specifier: ^5.3.1
         version: 5.3.1
+      '@fontsource-variable/space-grotesk':
+        specifier: ^5.3.0
+        version: 5.3.0
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -281,6 +284,9 @@ packages:
 
   '@fontsource-variable/onest@5.3.1':
     resolution: {integrity: sha512-xaaw6G4HDB2/RczsWLD/2bnib4ykmQlTlBUN3GOEOiyErilZukQWVJG95h9zwAy0i8KY+QzDa+COPfqhI72Acw==}
+
+  '@fontsource-variable/space-grotesk@5.3.0':
+    resolution: {integrity: sha512-2IxmvfB08i9vnGB3Ym/AXvhRE+8XOjWMXIyDum03c+tPwH0FUoMNQfGpU8NXPxjbws0Vvss3AH0Zqt4oJBBAdw==}
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -1104,6 +1110,8 @@ snapshots:
   '@fontsource-variable/jetbrains-mono@5.3.0': {}
 
   '@fontsource-variable/onest@5.3.1': {}
+
+  '@fontsource-variable/space-grotesk@5.3.0': {}
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:

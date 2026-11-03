@@ -1,5 +1,6 @@
 @import "@fontsource-variable/onest";
 @import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/space-grotesk";
 
 @tailwind base;
 @tailwind components;
@@ -150,6 +151,26 @@
     width: 1cqw;
     border-radius: 0.5cqw;
     background: linear-gradient(90deg, #8b90a3, #4a4f64);
+  }
+
+  /* NEXTRIBE wears the night sky of its own website: deep violet, soft glows and a few stars. */
+  .nx-night {
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(255, 255, 255, 0.55), transparent 60%),
+      radial-gradient(1px 1px at 37% 9%, rgba(255, 255, 255, 0.45), transparent 60%),
+      radial-gradient(1.5px 1.5px at 68% 22%, rgba(255, 255, 255, 0.5), transparent 60%),
+      radial-gradient(1px 1px at 88% 40%, rgba(255, 255, 255, 0.4), transparent 60%),
+      radial-gradient(1px 1px at 22% 63%, rgba(255, 255, 255, 0.35), transparent 60%),
+      radial-gradient(1.5px 1.5px at 79% 82%, rgba(255, 255, 255, 0.4), transparent 60%),
+      radial-gradient(60% 45% at 88% 0%, rgba(131, 82, 220, 0.38), transparent 70%),
+      radial-gradient(55% 40% at 5% 100%, rgba(91, 108, 240, 0.2), transparent 70%),
+      #0e0724;
+  }
+  .nx-gradient-text {
+    background: linear-gradient(90deg, #ece3fb, #bfa3f0 45%, #8352dc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   /* Jetaime wears its own brand: the scalloped awning and glass-case shelf from its website. */

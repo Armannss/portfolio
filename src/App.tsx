@@ -177,15 +177,15 @@ function Nextribe() {
     ["nextribe-breathe.jpg", "Breathing", "#512f4e", "Guided breathing with a glowing sphere and a choice of exercises"],
   ];
   return (
-    <section className="mt-28 md:mt-44">
+    <section className="nx-night mt-28 py-20 md:mt-44 md:py-28">
       <article id="nextribe" className="scroll-mt-8">
         <div className="wrap grid gap-5">
-          <p className="eyebrow text-soft">NEXTRIBE</p>
-          <h2 className="headline text-[clamp(2.375rem,6.4vw,5.25rem)]">
+          <p className="flex items-center gap-3 font-grotesk text-sm font-bold tracking-[0.32em] text-white"><img src={`${base}nextribe-mark.svg`} alt="" width={30} height={30} className="rounded-lg" />NEXTRIBE</p>
+          <h2 className="headline font-grotesk text-[clamp(2.375rem,6.4vw,5.25rem)]">
             One home for daily growth.
-            <span className="headline-sub">Installed from the browser.</span>
+            <span className="nx-gradient-text block">Installed from the browser.</span>
           </h2>
-          <p className="max-w-[44rem] text-xl leading-snug text-soft">
+          <p className="max-w-[44rem] text-xl leading-snug text-[#d9c8f7]/85">
             A Persian web app with daily missions across six paths, a planner, sleep and food tracking, flashcards, guided breathing, home workouts, an AI coach and a library of 198 works. Members add it to their phone without an app store.
           </p>
         </div>
@@ -194,7 +194,7 @@ function Nextribe() {
           {screens.map(([src, name, bar, alt], i) => (
             <figure key={src} className={`m-0 ${i % 2 ? "lg:mt-16" : ""}`}>
               <Phone src={src} alt={alt} bar={bar} light />
-              <figcaption className="mt-4 text-center text-sm text-dim">{name}</figcaption>
+              <figcaption className="mt-4 text-center text-sm text-[#bfa3f0]/75">{name}</figcaption>
             </figure>
           ))}
         </div>
@@ -203,23 +203,23 @@ function Nextribe() {
           <dl className="m-0 grid grid-cols-3 content-start gap-4">
             {[["71", "pages"], ["24", "API routes"], ["77", "database models"]].map(([value, name]) => (
               <div key={name}>
-                <dd className="m-0 text-[clamp(2.5rem,5.4vw,4.25rem)] font-extrabold leading-none tracking-tighter tabular-nums">{value}</dd>
-                <dt className="mt-2 text-sm text-soft">{name}</dt>
+                <dd className="m-0 text-[clamp(2.5rem,5.4vw,4.25rem)] font-grotesk font-bold leading-none tracking-tighter text-[#bfa3f0] tabular-nums">{value}</dd>
+                <dt className="mt-2 text-sm text-[#d9c8f7]/80">{name}</dt>
               </div>
             ))}
           </dl>
           <div className="grid gap-8 sm:grid-cols-3">
-            <Point title="Safety before missions" tick="bg-lime">An onboarding step hides missions that aren't suitable for a member.</Point>
-            <Point title="Private answers stay private" tick="bg-signal">The group never sees mood, journal or safety answers.</Point>
-            <Point title="A fair leaderboard" tick="bg-amber">Members rank by progress toward their own goal, not by raw totals.</Point>
+            <Point title="Safety before missions" tick="bg-[#34a985]">An onboarding step hides missions that aren't suitable for a member.</Point>
+            <Point title="Private answers stay private" tick="bg-[#cf6aad]">The group never sees mood, journal or safety answers.</Point>
+            <Point title="A fair leaderboard" tick="bg-[#f2795c]">Members rank by progress toward their own goal, not by raw totals.</Point>
           </div>
         </div>
 
         <div className="wrap mt-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 md:mt-14">
-          <p className="max-w-[38rem] text-sm text-dim">Still in early validation with club members, so there are no user numbers to report yet. Screens come from a test account with sample data. Source code is private.</p>
+          <p className="max-w-[38rem] text-sm text-[#bfa3f0]/70">Still in early validation with club members, so there are no user numbers to report yet. Screens come from a test account with sample data. Source code is private.</p>
           <p className="flex flex-wrap gap-x-6 gap-y-2">
-            <a className="text-link" href="https://nextribe.app/welcome">Visit the website</a>
-            <a className="text-link" href="https://nextribe.app/welcome#inside-app">Try the app preview</a>
+            <a className="text-link decoration-[#a27ce7]" href="https://nextribe.app/welcome">Visit the website</a>
+            <a className="text-link decoration-[#a27ce7]" href="https://nextribe.app/welcome#inside-app">Try the app preview</a>
           </p>
         </div>
       </article>
@@ -229,23 +229,23 @@ function Nextribe() {
 
 function Parsilon() {
   return (
-    <article id="parsilon" className="mt-28 scroll-mt-8 bg-white text-ink md:mt-44">
+    <article id="parsilon" className="mt-28 scroll-mt-8 bg-[#f4f7fc] text-[#0f172a] md:mt-44">
       <div className="wrap grid items-start gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10">
         <div className="grid gap-5">
-          <p className="eyebrow text-lime-deep">Parsilon Part</p>
-          <h2 className="headline text-[clamp(2.375rem,5.2vw,4.5rem)]">
+          <p className="eyebrow flex items-center gap-2.5 text-[#17479E]"><i className="h-2.5 w-2.5 rounded-sm bg-[#8CC63F]" />Parsilon Part</p>
+          <h2 className="headline text-[clamp(2.375rem,5.2vw,4.5rem)] text-[#0E2F6D]">
             The right part for the exact car.
-            <span className="block text-lime-deep">Found by an AI assistant.</span>
+            <span className="block text-[#2F5FB3]">Found by an AI assistant.</span>
           </h2>
           <p className="text-xl leading-snug text-ink-soft">
             A mobile-first auto parts shop with search, compatible cars, checkout, order tracking, wholesale requests and an admin panel with sales reports.
           </p>
           <div className="mt-5 grid gap-8">
-            <Point title="Answers come from the catalogue" tick="bg-lime">The assistant uses tools to search live products and check price and stock.</Point>
-            <Point title="Read-only by design" tick="bg-signal">It can't place orders or see customer accounts.</Point>
-            <Point title="The shop doesn't depend on AI" tick="bg-amber">Without an API key, the assistant page says so and everything else keeps working.</Point>
+            <Point title="Answers come from the catalogue" tick="bg-[#8CC63F]">The assistant uses tools to search live products and check price and stock.</Point>
+            <Point title="Read-only by design" tick="bg-[#2F5FB3]">It can't place orders or see customer accounts.</Point>
+            <Point title="The shop doesn't depend on AI" tick="bg-[#0E2F6D]">Without an API key, the assistant page says so and everything else keeps working.</Point>
           </div>
-          <p className="mt-3"><a className="text-link" href="https://github.com/Armannss/Parsilon-web-application-mobile-shell">View source on GitHub</a></p>
+          <p className="mt-3"><a className="text-link decoration-[#8CC63F]" href="https://github.com/Armannss/Parsilon-web-application-mobile-shell">View source on GitHub</a></p>
         </div>
 
         <div className="flex justify-center pb-10 lg:sticky lg:top-8 lg:-mt-44 lg:self-start">
