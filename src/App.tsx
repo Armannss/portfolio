@@ -356,31 +356,153 @@ function Jetaime() {
   );
 }
 
-function MoreWork() {
-  const rows = [
-    { id: "armanly", name: "Armanly", text: "An offline English app I built for my speaking class, with 29 lessons, 151 expressions, flashcards and timed drills.", stack: "HTML, CSS, JavaScript, Service Worker", href: "https://armannss.github.io/speak-and-learn/" },
-    { id: "belvia", name: "Belvia Order Calculator", text: "An internal shop tool that prices an order in three currencies and creates a printable invoice, in Persian and English.", stack: "HTML, CSS, JavaScript, PWA", href: "https://armannss.github.io/" },
+function Armanly() {
+  const screens = [
+    ["armanly-home.jpg", "Home", "Home screen with the day's plan and the next lesson in a speech bubble"],
+    ["armanly-lesson.jpg", "Lesson", "Lesson card teaching the word persuasive with its Persian meaning and a highlighted example"],
+    ["armanly-cards.jpg", "Flashcards", "Flashcard for persuasive with buttons for still learning and got it"],
+    ["armanly-practice.jpg", "Practice", "Practice menu with Daily 10, grammar drill, fill the blank and more"],
+  ];
+  const facts = [
+    ["151", "expressions"],
+    ["29", "lessons"],
+    ["13", "topics"],
+    ["9", "grammar topics"],
   ];
   return (
-    <section aria-labelledby="more-title" className="wrap mt-28 md:mt-44">
-      <h2 id="more-title" className="headline text-[clamp(2.125rem,5vw,3.75rem)]">More work</h2>
-      <div className="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
-        <div>
-          {rows.map((row) => (
-            <div key={row.id} id={row.id} className="grid scroll-mt-8 gap-2 border-t border-navy-line py-6">
-              <h3 className="text-2xl font-extrabold tracking-tight">{row.name}</h3>
-              <p className="text-soft">{row.text}</p>
-              <p className="text-sm text-dim">{row.stack}</p>
-              {row.href && <p className="mt-1"><a className="text-link" href={row.href}>Try {row.name.split(" ")[0]}</a></p>}
+    <article id="armanly" className="armanly mt-28 scroll-mt-8 py-20 md:mt-44 md:py-28">
+      <div className="wrap grid gap-5">
+        <p className="flex items-center gap-3 font-bricolage text-xl font-extrabold tracking-tight text-[#1B2033]">
+          <img src={`${base}armanly-mark.png`} alt="" width={36} height={36} className="rounded-[10px]" />
+          Armanly
+        </p>
+        <h2 className="font-bricolage text-[clamp(2.375rem,6.4vw,5.25rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-[#1B2033]" style={{ textWrap: "balance" }}>
+          Class notes become <mark className="armanly-mark">daily practice.</mark>
+        </h2>
+        <p className="max-w-[46rem] font-jakarta text-xl leading-snug text-[#565D75]">
+          Armanly turns the slides of my English speaking class into short lessons, spaced-repetition flashcards and timed speaking drills. It works offline, needs no account and keeps each learner's progress on their own phone.
+        </p>
+      </div>
+
+      <div className="rail mx-auto mt-12 grid max-w-[100rem] auto-cols-[min(66vw,16rem)] grid-flow-col gap-5 overflow-x-auto px-5 pb-8 md:mt-16 lg:grid-flow-row lg:grid-cols-4 lg:gap-7 lg:overflow-visible lg:px-10">
+        {screens.map(([src, name, alt], i) => (
+          <figure key={src} className={`m-0 ${i % 2 ? "lg:mt-16" : ""}`}>
+            <Phone src={src} alt={alt} bar="#F3F5FB" />
+            <figcaption className="mt-4 text-center font-jakarta text-sm font-semibold text-[#687089]">{name}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div className="wrap mt-8 grid gap-6 md:mt-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-10">
+        <div className="armanly-bubble">
+          <p className="font-jakarta text-sm font-semibold text-white/80">What the class gets</p>
+          <dl className="m-0 mt-4 grid grid-cols-2 gap-x-6 gap-y-5">
+            {facts.map(([value, name]) => (
+              <div key={name}>
+                <dd className="m-0 font-bricolage text-[clamp(2.5rem,5vw,3.5rem)] font-extrabold leading-none tracking-tight text-white">{value}</dd>
+                <dt className="mt-1 font-jakarta text-sm font-semibold text-white/80">{name}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            ["Spaced repetition", "Words you miss come back sooner, and words you know come back less often."],
+            ["Speaking drills that push back", "Timed case discussions where the app interrupts with a challenge mid-answer."],
+            ["Works offline", "After the first visit everything runs without a connection, and progress never leaves the phone."],
+            ["Progress without an account", "A private link carries a learner's progress to another device. Nothing is stored on a server."],
+          ].map(([title, text]) => (
+            <div key={title} className="armanly-card">
+              <h4 className="font-bricolage text-lg font-extrabold tracking-tight text-[#1B2033]">{title}</h4>
+              <p className="mt-1.5 font-jakarta text-[0.9688rem] leading-snug text-[#565D75]">{text}</p>
             </div>
           ))}
         </div>
-        <div className="mx-auto grid w-full max-w-[28rem] grid-cols-2 items-start gap-5 lg:sticky lg:top-8">
-          <Phone src="armanly.jpg" alt="Armanly home screen with a greeting, level and the first lesson" bar="#10131d" light />
-          <Phone src="belvia.jpg" alt="Order calculator form with customer details, exchange rate and items" bar="#161210" light className="mt-12" />
+      </div>
+
+      <div className="wrap mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <a className="armanly-button" href="https://armannss.github.io/speak-and-learn/">Try Armanly</a>
+        <a className="font-jakarta font-bold text-[#2740C4] underline decoration-[#FFE566] decoration-[3px] underline-offset-[0.25em]" href="https://github.com/Armannss/speak-and-learn">View source on GitHub</a>
+        <p className="w-full font-jakarta text-sm text-[#687089] sm:w-auto">HTML, CSS, JavaScript and a service worker. No framework and no build step.</p>
+      </div>
+    </article>
+  );
+}
+
+function Belvia() {
+  const screens = [
+    ["belvia-form.jpg", "Order form", "Order form with the customer, the euro to Rial rate, the shipping rate and product cards"],
+    ["belvia-summary.jpg", "Summary", "Receipt-style summary with the final amount in euros, Rial and Toman and the invoice button"],
+    ["belvia-dark.jpg", "Dark theme", "The order form in the dark theme"],
+    ["belvia-english.jpg", "English mode", "The order form in English with a left-to-right layout"],
+  ];
+  const lines = [
+    ["Live totals", "as you type"],
+    ["Product cards", "no sideways tables"],
+    ["Summary", "€ · Rial · Toman"],
+    ["Private profit", "hidden in one tap"],
+    ["Persian digits", "۱۲٫۵ = 12.5"],
+    ["English mode", "switches to LTR"],
+    ["Light and dark", "follows the phone"],
+    ["Refresh", "nothing is lost"],
+  ];
+  return (
+    <article id="belvia" className="mt-28 scroll-mt-8 bg-[#F5F2F0] py-20 text-[#2A221F] md:mt-44 md:py-28">
+      <div className="wrap grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-16">
+        <div className="grid gap-5">
+          <img src={`${base}belvia-mark.png`} alt="" width={342} height={480} className="w-16 lg:hidden" />
+          <p className="font-vazir text-sm font-bold uppercase tracking-[0.2em] text-[#8C756A]">Belvia Order Calculator</p>
+          <h2 className="font-vazir text-[clamp(2.375rem,6vw,4.75rem)] font-bold leading-[1.08] tracking-[-0.03em]" style={{ textWrap: "balance" }}>
+            From a euro price tag
+            <span className="block text-[#8C756A]">to a total in Toman.</span>
+          </h2>
+          <p className="max-w-[44rem] font-vazir text-xl leading-relaxed text-[#75685F]">
+            An internal tool for Belvia Online Shop. It works out an order's final price from euro prices, discounts and shipping by weight, shows it in euros, Rial and Toman, and prints a PDF invoice for the customer. Version 2 is a full redesign with the same formulas, so every order still adds up exactly as before.
+          </p>
+        </div>
+        <img src={`${base}belvia-mark.png`} alt="By Belvia Online Shop logo" width={342} height={480} className="mx-auto hidden w-[13rem] lg:block" />
+      </div>
+
+      <div className="rail mx-auto mt-12 grid max-w-[100rem] auto-cols-[min(66vw,16rem)] grid-flow-col gap-5 overflow-x-auto px-5 pb-8 md:mt-16 lg:grid-flow-row lg:grid-cols-4 lg:gap-7 lg:overflow-visible lg:px-10">
+        {screens.map(([src, name, alt], i) => (
+          <figure key={src} className={`m-0 ${i % 2 ? "lg:mt-16" : ""}`}>
+            <Phone src={src} alt={alt} bar="#F5F2F0" light={src === "belvia-dark.jpg"} />
+            <figcaption className="mt-4 text-center font-vazir text-sm font-semibold text-[#75685F]">{name}</figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div className="wrap mt-8 grid gap-10 md:mt-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
+        <div className="belvia-receipt" aria-label="What changed in version 2">
+          <p className="text-center font-vazir text-sm font-bold uppercase tracking-[0.2em] text-[#8C756A]">Version 2</p>
+          <div className="my-4 border-t border-dashed border-[#d9cec6]" />
+          <dl className="m-0 grid gap-2.5 font-mono text-[0.84rem]">
+            {lines.map(([name, value]) => (
+              <div key={name} className="flex items-baseline gap-2">
+                <dt className="shrink-0">{name}</dt>
+                <span className="mb-1 flex-1 border-b border-dotted border-[#cbbfb6]" />
+                <dd className="m-0 shrink-0 text-right text-[#5A473D]">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="my-4 border-t border-dashed border-[#d9cec6]" />
+          <p className="flex items-baseline justify-between font-mono text-[0.95rem] font-bold">
+            <span>Formulas</span>
+            <span>unchanged</span>
+          </p>
+        </div>
+        <div className="grid content-start gap-6">
+          <p className="max-w-[40rem] font-vazir text-lg leading-relaxed text-[#2A221F]">
+            The shop owner uses it while talking to a customer, so the profit section can be hidden before the screen is shown, and on a phone the final total and the invoice button stay at the bottom of the screen. Colours come from the Belvia logo, in a light and a dark theme.
+          </p>
+          <p className="flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a className="belvia-button" href="https://armannss.github.io/">Try the calculator</a>
+            <a className="font-vazir font-bold text-[#5A473D] underline decoration-[#8C756A] decoration-2 underline-offset-[0.25em]" href="https://github.com/Armannss/Armannss.github.io">View source on GitHub</a>
+          </p>
+          <p className="font-vazir text-sm text-[#75685F]">HTML, CSS, JavaScript and a service worker. Screens show a sample order.</p>
         </div>
       </div>
-    </section>
+    </article>
   );
 }
 
@@ -444,7 +566,8 @@ export function App() {
       <Parsilon />
       <Armap />
       <Jetaime />
-      <MoreWork />
+      <Armanly />
+      <Belvia />
       <Background />
       <Contact />
     </main>

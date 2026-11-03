@@ -1,6 +1,9 @@
 @import "@fontsource-variable/onest";
 @import "@fontsource-variable/jetbrains-mono";
 @import "@fontsource-variable/space-grotesk";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/vazirmatn";
 
 @tailwind base;
 @tailwind components;
@@ -173,6 +176,88 @@
     color: transparent;
   }
 
+  /* Armanly wears its own design system: cool grey ground, 2px outlines with a ledge,
+     the highlighter from a student's notes and the speech bubble of a speaking class. */
+  .armanly {
+    background: #F3F5FB;
+  }
+  .armanly-mark {
+    padding: 0 0.12em;
+    border-radius: 0.12em;
+    background: linear-gradient(transparent 12%, #FFE566 12%, #FFE566 88%, transparent 88%);
+    color: inherit;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .armanly-bubble {
+    position: relative;
+    padding: 1.75rem;
+    border-radius: 1.5rem 1.5rem 1.5rem 0.4rem;
+    background: #3B5BFF;
+    box-shadow: 0 4px 0 #2740C4;
+  }
+  .armanly-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -1.05rem;
+    left: 0;
+    width: 1.6rem;
+    height: 1.2rem;
+    background: #3B5BFF;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .armanly-card {
+    padding: 1.15rem 1.25rem;
+    border: 2px solid #DFE4F0;
+    border-bottom-width: 4px;
+    border-radius: 1rem;
+    background: #fff;
+  }
+  .armanly-button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.85rem;
+    background: #3B5BFF;
+    box-shadow: 0 4px 0 #2740C4;
+    color: #fff;
+    font: 700 1rem/1.2 "Plus Jakarta Sans Variable", sans-serif;
+    text-decoration: none;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .armanly-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #2740C4;
+  }
+
+  /* Belvia wears its logo brown on warm paper, and its changes are printed as a receipt. */
+  .belvia-receipt {
+    --tooth: 0.9rem;
+    padding: 1.75rem 1.6rem calc(1.75rem + var(--tooth));
+    background: #fff;
+    color: #2A221F;
+    box-shadow: 0 20px 40px -24px rgba(90, 71, 61, 0.45);
+    /* Perforated bottom edge, like a receipt torn off a printer roll. */
+    -webkit-mask:
+      radial-gradient(circle at 50% 100%, transparent 0.42rem, #000 0.45rem) bottom / 1.25rem var(--tooth) repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - var(--tooth)) no-repeat;
+    mask:
+      radial-gradient(circle at 50% 100%, transparent 0.42rem, #000 0.45rem) bottom / 1.25rem var(--tooth) repeat-x,
+      linear-gradient(#000 0 0) top / 100% calc(100% - var(--tooth)) no-repeat;
+  }
+  .belvia-button {
+    display: inline-block;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: #5A473D;
+    color: #fff;
+    font: 700 1rem/1.2 "Vazirmatn Variable", sans-serif;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .belvia-button:hover {
+    background: #8C756A;
+  }
+
   /* Jetaime wears its own brand: the scalloped awning and glass-case shelf from its website. */
   .awning {
     --scallop: 4.5rem;
@@ -218,6 +303,9 @@
   }
   .mevo-flow {
     display: none;
+  }
+  .armanly-button {
+    transition: none;
   }
   .shelf-phone {
     transition: none;
