@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { MevoDiagram } from "./components/MevoDiagram";
 import { ProjectGraph } from "./components/ProjectGraph";
+import { STATUS_BARS } from "./statusBars";
 
 const base = import.meta.env.BASE_URL;
 const GITHUB = "https://github.com/Armannss";
 const LINKEDIN = "https://www.linkedin.com/in/arman-naseri-far-5773b3341/";
 
-function StatusBar({ light, image }: { light: boolean; image: string }) {
+function StatusBar({ light, background }: { light: boolean; background: string }) {
   return (
-    <div className={`iphone-status ${light ? "text-white" : "text-black"}`} style={{ backgroundImage: `url(${image})` }} aria-hidden="true">
+    <div className={`iphone-status ${light ? "text-white" : "text-black"}`} style={{ background }} aria-hidden="true">
       <span>9:41</span>
       <svg viewBox="0 0 68 13" fill="currentColor">
         <rect x="0" y="9" width="3" height="4" rx="1" />
@@ -38,7 +40,7 @@ function Phone({ src, alt, className = "", bar, light = false }: PhoneProps) {
       <div className="iphone-body shadow-phone">
         <div className="iphone-glass">
           <div className="iphone-screen" style={{ background: bar }}>
-            <StatusBar light={light} image={image} />
+            <StatusBar light={light} background={STATUS_BARS[src] ?? bar} />
             <img src={image} alt={alt} width={780} height={1580} loading="lazy" decoding="async" className="iphone-image" />
             <span className="iphone-island" />
           </div>
@@ -110,6 +112,59 @@ function Opening() {
   );
 }
 
+function Mevo() {
+  return (
+    <section id="work" className="scroll-mt-8 pt-24 md:pt-40">
+      <article id="mevo" className="wrap grid scroll-mt-8 gap-10 md:gap-14">
+        <div className="grid gap-5">
+          <p className="eyebrow text-soft">Research internship, Politecnico di Torino</p>
+          <h2 className="headline text-[clamp(2.375rem,6.4vw,5.25rem)]">
+            Conduct an orchestra from a VR headset.
+            <span className="headline-sub">Musicians follow in their browser.</span>
+          </h2>
+          <p className="max-w-[46rem] text-xl leading-snug text-soft">
+            MEVO is a networked music performance system from Prof. Cristina Rottondi's group at the Department of Electronics and Telecommunications. Since May 2026 I've worked with Dr. Leonardo Severi and Dr. Matteo Sacchetto, who built the original system, to grow its shared rehearsal hall across the headset, the browser and the services between them.
+          </p>
+          <dl className="m-0 mt-2 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Role", "Research Intern"],
+              ["Where", "SONIC Lab, DET, Politecnico di Torino"],
+              ["When", "May 2026 to present"],
+              ["Supervisor", "Prof. Cristina Rottondi"],
+            ].map(([name, value]) => (
+              <div key={name}>
+                <dt className="text-sm text-dim">{name}</dt>
+                <dd className="m-0 font-semibold">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="rounded-[1.75rem] border border-navy-line bg-navy-up/60 p-5 md:p-9">
+          <MevoDiagram />
+        </div>
+
+        <div className="grid gap-6 rounded-[1.75rem] bg-white p-6 text-ink md:p-9">
+          <p className="eyebrow text-lime-deep">What I built</p>
+          <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+            <Point title="One hall, two worlds" tick="bg-lime">The rehearsal hall, with paintings, instruments, picture lamps and softer light, looks the same in the headset and in the browser.</Point>
+            <Point title="Avatars musicians choose" tick="bg-signal">Six avatars with outfit variants. Musicians pick one on the web page and the conductor sees it in VR.</Point>
+            <Point title="A seating plan" tick="bg-amber">Taken seats show on the plan, and a button lets a musician change seat.</Point>
+            <Point title="Presence" tick="bg-lime">Name labels over every musician, and heads that turn toward the conductor.</Point>
+            <Point title="Musicians who rehearse" tick="bg-signal">Idle motion between pieces. When the rehearsal timer runs, avatars take up their instruments with arm IK.</Point>
+            <Point title="Connection quality in the headset" tick="bg-amber">The conductor sees each musician's round-trip time, so a weak link is visible during the rehearsal.</Point>
+          </div>
+          <div className="h-px bg-rule" />
+          <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
+            <p className="max-w-[40rem] text-sm text-ink-soft">Unity, C#, Meta Quest, Unity WebGL, TypeScript, Node.js, Fastify, WebRTC and WebSocket. The project is not public, so this page shows how it works instead of screenshots.</p>
+            <a className="text-link" href="https://arxiv.org/abs/2404.09665">Read the group's MEVO paper</a>
+          </div>
+        </div>
+      </article>
+    </section>
+  );
+}
+
 function Nextribe() {
   const screens = [
     ["nextribe-today.jpg", "Today", "#1f182c", "Home screen with a personal greeting, the path logo that fills up through the week and the day's score"],
@@ -122,7 +177,7 @@ function Nextribe() {
     ["nextribe-breathe.jpg", "Breathing", "#512f4e", "Guided breathing with a glowing sphere and a choice of exercises"],
   ];
   return (
-    <section id="work" className="scroll-mt-8 pt-24 md:pt-40">
+    <section className="mt-28 md:mt-44">
       <article id="nextribe" className="scroll-mt-8">
         <div className="wrap grid gap-5">
           <p className="eyebrow text-soft">NEXTRIBE</p>
@@ -305,7 +360,6 @@ function MoreWork() {
   const rows = [
     { id: "armanly", name: "Armanly", text: "An offline English app I built for my speaking class, with 29 lessons, 151 expressions, flashcards and timed drills.", stack: "HTML, CSS, JavaScript, Service Worker", href: "https://armannss.github.io/speak-and-learn/" },
     { id: "belvia", name: "Belvia Order Calculator", text: "An internal shop tool that prices an order in three currencies and creates a printable invoice, in Persian and English.", stack: "HTML, CSS, JavaScript, PWA", href: "https://armannss.github.io/" },
-    { id: "mevo", name: "MEVO / Director", text: "A team project for remote conducting between a Meta Quest headset and musicians in a browser. I built the shared hall, avatars, seating, playing poses and connection quality display.", stack: "Unity, C#, Node.js, WebRTC. Private source." },
   ];
   return (
     <section aria-labelledby="more-title" className="wrap mt-28 md:mt-44">
@@ -385,6 +439,7 @@ export function App() {
   return (
     <main className="overflow-x-clip">
       <Opening />
+      <Mevo />
       <Nextribe />
       <Parsilon />
       <Armap />
